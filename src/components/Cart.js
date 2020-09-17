@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import CartItem from './CartItem'
 import '../styles/Cart.css'
 
 const Cart = ({initialItems}) => {
+    const initialState = JSON.parse(window.localStorage.getItem('items'))
+    const [items, setItems] = useState(initialState || initialItems)
 
-    const [items, setItems] = useState(initialItems)
+    useEffect(() => {
+        window.localStorage.setItem('items', JSON.stringify(items))
+    }, [items])
 
     const updateQty = (id, newQty) => {
         const newItems = items.map(item => {
