@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import CartItem from './CartItem'
+import '../styles/Cart.css'
 
 const Cart = ({initialItems}) => {
 
